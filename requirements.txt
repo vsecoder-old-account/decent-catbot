@@ -1,1 +1,5 @@
 aiogram==3.0.0b3
+tinydb
+asyncio
+aiohttp
+logging

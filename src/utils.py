@@ -1,22 +1,38 @@
-from aiogram import types
 import re
 
-def get_full_name(message: types.Message) -> str:
-    user = message.from_user
-    return _process(f"{user.first_name} "
-            + (user.last_name if getattr(user, "last_name", False) else ""))
+from aiogram import types
 
-def get_link(msg: types.Message) -> str:
-    user = msg.from_user
-    return (
-        f"tg://user?id={user.id}"
-        if user.username
-        else (
-            f"tg://resolve?domain={user.username}"
-            if getattr(user, "username", None)
-            else ""
+
+def get_full_name(user) -> str:
+    try:
+        return _process(f"{user.first_name} "
+                + (user.last_name if getattr(user, "last_name", False) else ""))
+    except:
+        return _process(f"{user['first_name']} "
+                + (user['last_name'] if getattr(user, "last_name", False) else ""))
+
+
+def get_link(user) -> str:
+    try:
+        return (
+            f"tg://user?id={user.id}"
+            if user.username
+            else (
+                f"tg://resolve?domain={user.username}"
+                if getattr(user, "username", None)
+                else ""
+            )
         )
-    )
+    except:
+        return (
+            f"tg://user?id={user['id']}"
+            if user['username']
+            else (
+                f"tg://resolve?domain={user['username']}"
+                if getattr(user, "username", None)
+                else ""
+            )
+        )
 
 def _process(text: str) -> str:
     return text.replace("<", "&lt;").replace(">", "&gt;")

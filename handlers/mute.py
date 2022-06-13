@@ -1,6 +1,7 @@
-from aiogram import types, Bot
 import time
-from src.utils import convert_time, get_link, get_full_name
+
+from aiogram import Bot, types
+from src.utils import convert_time, get_full_name, get_link
 
 mute_text = '🔇 <b><a href="{}">{}</a> замучен на {} минут. Причина: </b><i>{}</i>'
 unmute_text = '🔊 <b><a href="{}">{}</a> unmuted</b>'
@@ -22,7 +23,7 @@ async def mute_handler(event: types.Message, bot: Bot):
                         permissions=types.ChatPermissions(can_send_messages=False),
                         until_date=time.time()+t
                     )
-                    await event.reply(mute_text.format(get_link(event.reply_to_message), get_full_name(event.reply_to_message), t/60, args[1]))
+                    await event.reply(mute_text.format(get_link(event.reply_to_message.from_user), get_full_name(event.reply_to_message.from_user), t/60, args[1]))
                 if command == '/unmute':
                     await bot.restrict_chat_member(
                         event.chat.id, 
@@ -36,8 +37,8 @@ async def mute_handler(event: types.Message, bot: Bot):
                         ),
                         until_date=time.time()
                     )
-                    await event.reply(unmute_text.format(get_link(event.reply_to_message), get_full_name(event.reply_to_message)))
+                    await event.reply(unmute_text.format(get_link(event.reply_to_message.from_user), get_full_name(event.reply_to_message.from_user)))
             else:
-                await event.reply('♦️ <b>Ошибка, команда должна быть в ответ на сообщение</b>\n\nПример: <code>/mute 1m flood</code>')
+                await event.reply('♦️ <b>Ошибка, команда должна быть в ответ на сообщение</b>\n\nПример: <code>/mute 1m flood</code> or <code>/unmute</code>')
     except:
-        await event.reply('♦️ <b>Ошибка, проверьте права бота, и правильность команды</b>\n\nПример: <code>/mute 1m flood</code>')
+        await event.reply('♦️ <b>Ошибка, проверьте права бота, и правильность команды</b>\n\nПример: <code>/mute 1m flood</code> or <code>/unmute</code>')

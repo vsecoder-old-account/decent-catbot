@@ -17,6 +17,8 @@ async def main():
         disp.message.register(protects_handler, commands={"protects"})
         disp.message.register(mute_handler, commands={"mute", "unmute"})
         disp.message.register(ban_handler, commands={"ban", "unban"})
+        disp.message.register(set_protect_handler, commands={"set_protect", "setprotect"})
+        disp.message.register(notes_handler, commands={"nsave", "nstop", "notes"})
         # reports
         # warns
         disp.message.register(protect_handler)

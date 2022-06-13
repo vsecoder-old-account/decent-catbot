@@ -14,6 +14,11 @@ async def protect_handler(event: types.Message):
         return
     funcs.init_chat(event.chat.id)
 
+    notes = funcs.get_notes(event.chat.id)
+    for note in notes:
+        if f"#{note['name']}" == event.text:
+            await event.reply(f'{note["text"]}')
+
     await welcome.p__welcome(event)
 
     await antichannel.p__antichannel(event)

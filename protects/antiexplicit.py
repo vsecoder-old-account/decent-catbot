@@ -5,14 +5,22 @@ from db import funcs
 answer = '🤐 <a href="{}">{}</a>:\n <i>{}</i>'
 
 async def p__censor(event: types.Message):
-    if funcs.is_protected(event.chat.id, 'antiexplicit') and getattr(event, "text", False):
-        text = censore(event.text)
-        if text:
-            await event.delete()
-            await event.answer(
-                answer.format(
-                    get_link(event.from_user),
-                    get_full_name(event.from_user), 
-                    text
+    if funcs.is_protected(event.chat.id, 'antiexplicit'):
+        if getattr(event, "text", False):
+            text = censore(event.text)
+            if text:
+                await event.delete()
+                await event.answer(
+                    answer.format(
+                        get_link(event.from_user),
+                        get_full_name(event.from_user), 
+                        text
+                    )
                 )
-            )
+        if getattr(event, "caption", False):
+            text = censore(event.caption)
+            if text:
+                await event.delete()
+                await event.answer(
+                    f'🤐 Пожалуйста без таких выражений <b>{get_full_name(event.from_user)}</b>!'
+                )

@@ -1,6 +1,9 @@
 # Decent cat bot
 
-[![wakatime](https://wakatime.com/badge/user/17993a3c-e23b-43ce-a9c6-84b6248d1411/project/59440ada-465f-445c-913f-ef194a24ba40.svg)](https://wakatime.com/badge/user/17993a3c-e23b-43ce-a9c6-84b6248d1411/project/59440ada-465f-445c-913f-ef194a24ba40)
+[![wakatime](https://wakatime.com/badge/github/vsecoder/decent-catbot.svg)](https://wakatime.com/badge/github/vsecoder/decent-catbot)
+![issues](https://img.shields.io/codeclimate/issues/vsecoder/decent-catbot)
+![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/vsecoder/decent-catbot/master)
+![GitHub](https://img.shields.io/github/license/vsecoder/decent-catbot)
 
 A bot for multifunctional chat moderation.
 

@@ -26,15 +26,18 @@ Chat = Query()
 """
 
 def init_chat(id):
+    #print(db.search(Chat.id == id))
+    if db.search(Chat.id == id):
+        return False
     db.insert({
         "id": id,
         "antichannel": False,
         "antigif": False,
         "antiraid": False,
-        "antiexplicit": False,
+        "antiexplicit": True,
         "antitagall": False,
         "antitarab": False,
-        "antinsfw": False,
+        "antinsfw": True,
         "antiflood": False,
         "banninja": False,
         "welcome": True,
@@ -44,11 +47,15 @@ def init_chat(id):
         "notes": [{"name": "dev", "text": "@vsecoder"}]
     })
 
-def check_protected(id, protect):
+def is_protected(id, protect):
     try:
         return db.search(Chat.id == id)[0][protect]
     except:
         return False
+
+def set_protected(id, protect, value):
+    db.update({protect: value}, Chat.id == id)
+    return True
 
 def create_note(id, name, text):
     notes = db.search(Chat.id == id)[0]["notes"]
@@ -93,3 +100,5 @@ def delete_warn(id, text):
 def get_warns(id, user_id):
     warns = db.search(Chat.id == id)[0]["warns"][user_id]
     return warns
+
+set_protected(-1001698285437, 'antitagall', True)

@@ -1,7 +1,26 @@
 import re
 
-from aiogram import types
+import sys
+sys.path.append("./censure")
 
+from censure import Censor
+
+censor_ru = Censor.get(lang='ru')
+censor_en = Censor.get(lang='en')
+
+#from nsfw_detector import predict
+
+#model = predict.load_model('./src/nsfw_model.h5')
+
+
+def is_nsfw():
+    pass
+
+def censore(text):
+    text1 = censor_ru.clean_line(text)
+		
+    if text != text1[0]:
+        return text1[0]
 
 def get_full_name(user) -> str:
     try:

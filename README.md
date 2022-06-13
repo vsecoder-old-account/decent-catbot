@@ -1,6 +1,3 @@
-# aiogram-bot-template
-Template for creating scalable bots with aiogram
+# Decent cat bot
 
-### Bot examples:
-- https://github.com/Forden/DiscussRemoverBot (https://t.me/DiscussRemoverBot)
-- https://github.com/Forden/qbittorrent-bot
+A bot for multifunctional chat moderation.

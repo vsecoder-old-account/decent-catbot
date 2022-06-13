@@ -1,6 +1,7 @@
 # Decent cat bot
 
 [![wakatime](https://wakatime.com/badge/github/vsecoder/decent-catbot.svg)](https://wakatime.com/badge/github/vsecoder/decent-catbot)
+
 A bot for multifunctional chat moderation.
 
 The bot has both the usual commands (ban, unban, kick, mute, unmute) and special protections that can be configured and used, their list is:

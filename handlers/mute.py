@@ -3,8 +3,10 @@ import time
 from aiogram import Bot, types
 from src.utils import convert_time, get_full_name, get_link
 
-mute_text = '🔇 <b><a href="{}">{}</a> замучен на {} минут. Причина: </b><i>{}</i>'
-unmute_text = '🔊 <b><a href="{}">{}</a> unmuted</b>'
+from config import STRING
+
+mute_text = STRING['mute']
+unmute_text = STRING['unmute']
 
 async def mute_handler(event: types.Message, bot: Bot):
     try:

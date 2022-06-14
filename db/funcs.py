@@ -57,6 +57,9 @@ def set_protected(id, protect, value):
     db.update({protect: value}, Chat.id == id)
     return True
 
+def get_chat_protects(id):
+    return db.search(Chat.id == id)[0]
+
 def create_note(id, name, text):
     notes = db.search(Chat.id == id)[0]["notes"]
     notes.append({"name": name, "text": text})

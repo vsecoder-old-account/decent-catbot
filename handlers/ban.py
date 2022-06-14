@@ -3,8 +3,10 @@ import time
 from aiogram import Bot, types
 from src.utils import convert_time, get_full_name, get_link
 
-ban_text = '🔒 <b><a href="{}">{}</a> забанен на {} минут. Причина: </b><i>{}</i>'
-unban_text = '🔑 <b><a href="{}">{}</a> unbanned</b>'
+from config import STRING
+
+ban_text = STRING["ban"]
+unban_text = STRING["unban"]
 
 async def ban_handler(event: types.Message, bot: Bot):
     command = event.text.split()[0]

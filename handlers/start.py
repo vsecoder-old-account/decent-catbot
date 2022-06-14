@@ -2,6 +2,8 @@ from aiogram import types
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from src.utils import get_full_name
 
+from config import STRING
+
 
 async def start_handler(event: types.Message):
     if event.chat.id == event.from_user.id:
@@ -16,8 +18,8 @@ async def start_handler(event: types.Message):
             url="https://telegra.ph/Politika-konfidencialnosti--Decent-catbot-06-13"
         )
         builder.add(*[invite, url])
-        # t.me/bot_user_name?startgroup=True
+
         await event.answer(
-            f"Привет, <b>{get_full_name(event.from_user)}</b> 👋\n\nДобавьте меня в чат, и выдайте права администратора, остальное расскажу по мере поступления!",
+            STRING["start"].format(get_full_name(event.from_user)),
             reply_markup=builder.as_markup()
         )

@@ -2,7 +2,9 @@ from aiogram import types
 from src.utils import censore, get_full_name, get_link
 from db import funcs
 
-answer = '🤐 <a href="{}">{}</a>:\n <i>{}</i>'
+from config import STRING
+
+answer = STRING['explicit']
 
 async def p__censor(event: types.Message):
     if funcs.is_protected(event.chat.id, 'antiexplicit'):

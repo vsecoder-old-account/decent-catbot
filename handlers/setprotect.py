@@ -1,9 +1,11 @@
-from aiogram import types
+from aiogram import types, Bot
 from db import funcs
 
-anwer = '🛡 <b>Защита {} {}</b>'
+from config import STRING
 
-async def set_protect_handler(event: types.Message):
+anwer = STRING['protect']
+
+async def set_protect_handler(event: types.Message, bot: Bot):
     if event.chat.id != event.from_user.id:
         member = await bot.get_chat_member(event.chat.id, event.from_user.id)
         if 'administrator' == member.status or 'creator' == member.status:

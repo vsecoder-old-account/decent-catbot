@@ -24,6 +24,8 @@ async def main():
         # warns
         disp.message.register(protect_handler)
         await disp.start_polling(bot)
+    except Exception as e:
+        print(e)
     finally:
         #await bot.close()
         pass

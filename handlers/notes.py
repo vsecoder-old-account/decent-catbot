@@ -1,5 +1,6 @@
 from aiogram import types, Bot
 from db import funcs
+from src.utils import _process
 
 from config import STRING
 
@@ -29,5 +30,5 @@ async def notes_handler(event: types.Message, bot: Bot):
                 msg = answer
                 notes = funcs.get_notes(event.chat.id)
                 for note in notes:
-                    msg += f' - <code>#{note["name"]}</code>\n'
+                    msg += f' - <code>#{_process(note["name"])}</code>\n'
                 await event.answer(msg)

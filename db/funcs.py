@@ -26,7 +26,6 @@ Chat = Query()
 """
 
 def init_chat(id):
-    #print(db.search(Chat.id == id))
     if db.search(Chat.id == id):
         return False
     db.insert({
@@ -41,7 +40,7 @@ def init_chat(id):
         "antiflood": False,
         "banninja": False,
         "welcome": True,
-        "welcome_text": "✌️ Hi, {mention}!",
+        "welcome_text": "👋 Приветствую, <b>{}</b> в чате <b>{}</b>!",
         "report": True,
         "warns": [],
         "notes": [{"name": "dev", "text": "@vsecoder"}]
@@ -103,5 +102,3 @@ def delete_warn(id, text):
 def get_warns(id, user_id):
     warns = db.search(Chat.id == id)[0]["warns"][user_id]
     return warns
-
-set_protected(-1001698285437, 'antitagall', True)

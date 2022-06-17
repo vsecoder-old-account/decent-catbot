@@ -3,8 +3,8 @@ Bot configs and texts
 """
 
 BOT = {
-    "id": 123456789,
-    "token": "123456789:ABCDEFGHIcdefghijklmnopqrstuvwxyz",
+    "id": 5504395725,
+    "token": "5504395725:AAFmjuz9M54hJLJRug3meYE4F54wDhQJKfI",
     "parse_mode": "HTML",
     "name": "A decent cat🐈",
     "version": "2.5.3",
@@ -26,6 +26,17 @@ STRING = {
     "notes": '💼 <b>Заметки:</b>\n',
     "explicit": '🤐 <a href="{}">{}</a>:\n <i>{}</i>',
     "welcome_bot": "🧐 <b>Хм, а тут уютненько, жду <u>права администратора</u>, а чтобы начать использовать бота, напишите сюда <code>/protects</code>!</b>",
-    "welcome_user": "👋 Приветствую, <b>{}</b> в чате <b>{}</b>!",
     "protect": "🛡 <b>Защита {} {}</b>",
 }
+
+PROTECTS = [
+    {"name": "AntiTagAll"},
+    {"name": "Welcome"},
+    {"name": "AntiRaid"},
+    {"name": "AntiChannel"},
+    {"name": "AntiGIF"},
+    {"name": "AntiNSFW"},
+    {"name": "AntiFlood"},
+    {"name": "AntiExplicit"},
+    {"name": "BanNinja"},
+]

@@ -1,5 +1,7 @@
 import re
 
+import random
+import os
 import sys
 sys.path.append("./censure")
 
@@ -13,8 +15,13 @@ censor_en = Censor.get(lang='en')
 #model = predict.load_model('./src/nsfw_model.h5')
 
 
-def is_nsfw():
+def is_nsfw(file, format):
     pass
+
+def get_random_gif() -> str:
+    with open("src/gifs/cats.txt", "r") as f:
+        gifs = f.read().splitlines()
+    return random.choice(gifs)
 
 def censore(text):
     text1 = censor_ru.clean_line(text)

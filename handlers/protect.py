@@ -1,5 +1,5 @@
 from aiogram import types
-from src.utils import get_full_name
+from src.utils import _process
 
 from protects import welcome
 from protects import antiexplicit
@@ -16,8 +16,8 @@ async def protect_handler(event: types.Message):
 
     notes = funcs.get_notes(event.chat.id)
     for note in notes:
-        if f"#{note['name']}" == event.text:
-            await event.reply(f'{note["text"]}')
+        if f"#{_process(note['name'])}" == event.text:
+            await event.reply(f'{_process(note["text"])}')
 
     await welcome.p__welcome(event)
 
